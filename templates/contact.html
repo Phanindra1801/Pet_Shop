@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Julie Stores</title>
+  <link rel="shortcut icon" href="./favicon.svg" type="image/svg+xml">
+    <link rel="stylesheet" href='static/css/style.css'>
+  <link rel="stylesheet" href='static/css/contactstyle.css'>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300;400;500;600;700&family=Roboto:wght@400;500;700&display=swap"
+    rel="stylesheet">
+</head>
+<body id="top">
+  <header class="header" data-header>
+    <div class="container">
+      <div class="overlay" data-overlay></div>
+      <a href="#" class="logo">
+        <img src="static/images/logo.png" width="160" height="50" alt="Julie logo">
+      </a>
+      <button class="nav-open-btn" data-nav-open-btn aria-label="Open Menu">
+        <ion-icon name="menu-outline"></ion-icon>
+      </button>
+      <nav class="navbar" data-navbar>
+        <button class="nav-close-btn" data-nav-close-btn aria-label="Close Menu">
+          <ion-icon name="close-outline"></ion-icon>
+        </button>
+        <a href="#" class="logo">
+          <img src="static/images/logo.svg" width="190" height="50" alt="Footcap logo">
+        </a>
+        <ul class="navbar-list">
+          <li class="navbar-item">
+            <a href="{% url 'home' %}" class="navbar-link">Home</a>
+          </li>
+          <li class="navbar-item">
+            <a href="{% url 'home' %}#Shop" class="navbar-link">Shop</a>
+          </li>
+          <li class="navbar-item">
+            <a href="{% url 'home' %}#Pets" class="navbar-link">Pets</a>
+          </li>
+          <li class="navbar-item">
+            <a href="{% url 'home' %}#Needs" class="navbar-link">Needs</a>
+          </li>
+          <li class="navbar-item">
+            <a href="{% url 'home' %}#Food" class="navbar-link">Food</a>
+          </li>
+          <li class="navbar-item">
+            <a href="{% url 'owner' %}" class="navbar-link">Donor</a>
+          </li>
+          <li class="navbar-item">
+            <a href="#" class="navbar-link">About</a>
+          </li>
+          <li class="navbar-item">
+            <a href="{% url 'contact' %}" class="navbar-link">Contact</a>
+          </li>
+          <li class="navbar-item">
+            <a href="{% url 'rescue' %}" class="navbar-link">Rescue</a>
+          </li>
+        </ul>
+        <ul class="nav-action-list">
+          <li>
+            <button class="nav-action-btn">
+              <ion-icon name="search-outline" aria-hidden="true"></ion-icon>
+              <span class="nav-action-text">Search</span>
+            </button>
+          </li>
+          <li>
+            <li class="navbar-item">
+            <a href="{% url 'logout' %}" class="navbar-link">Logout</a>
+          </li>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+{% block body %}
+<div>
+    <center>
+        <h1>Contact Us</h1>
+        <h4>Got questions or feedback? Reach out to us!</h4>
+    </center>
+</div>
+<div class="container contact">
+  {% csrf_token %}
+  <form action="{% url 'contact' %}" method="post">
+        {% csrf_token %}
+        <div class="row">
+            <div class="col-md-3">
+                <div class="contact-info">
+                    <img src="https://image.ibb.co/kUASdV/contact-image.png" alt="image"/>
+                    <h2>We'd Love to Hear from You!</h2>
+                    <h4>Got any questions or feedback? Drop us a message!</h4>
+                </div>
+            </div>
+            <div class="col-md-9">
+                <div class="contact-form">
+                    <div class="form-group">
+                      <label class="control-label col-sm-2" for="firstname">First Name:</label>
+                      <div class="col-sm-10">
+                        <input type="text" class="form-control" id="firstname" placeholder="Enter First Name" name="firstname">
+                      </div>
+                        <br>
+                        <br>
+                    </div>
+                    <div class="form-group">
+                      <label class="control-label col-sm-2" for="lastname">Last Name:</label>
+                      <div class="col-sm-10">
+                        <input type="text" class="form-control" id="lastname" placeholder="Enter Last Name" name="lastname">
+                      </div>
+                    </div>
+                    <br>
+                    <br>
+                    <br>
+                    <div class="form-group">
+                      <label class="control-label col-sm-2" for="email">Email:</label>
+                      <div class="col-sm-10">
+                        <input type="email" class="form-control" id="email" placeholder="Enter email" name="email">
+                      </div>
+                    </div>
+                    <br>
+                        <br>
+                    <div class="form-group">
+                      <label class="control-label col-sm-2" for="comment">Comment:</label>
+                      <div class="col-sm-10">
+                        <textarea class="form-control" rows="8" id="comment" name="comment"></textarea>
+                      </div>
+                    </div>
+                    <br>
+                    <br>
+                    <br>
+                    <div class="form-group">
+                      <div class="d-grid gap-2 col-sm-10">
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                          <br><br><br>
+                      </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+  </form>
+</div>
+{% endblock %}
+
+
+</body>
+</html>

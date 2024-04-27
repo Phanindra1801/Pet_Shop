@@ -1,0 +1,108 @@
+
+
+
+
+
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <link rel="stylesheet"href="/static/css/carproducts.css">
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet">
+   <link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Products</title>
+
+  <style>
+  .cards-container {
+            text-align: center; /* Center align the content */
+        }
+        .message {
+            display: inline-block; /* Ensure each message appears on its own line */
+            text-align: left; /* Left align the text within each message */
+            margin-bottom: 10px; /* Add some vertical spacing between messages */
+        }
+        .error-message {
+            color: red;
+        }
+        .success-message {
+            color: green;
+        }
+    body {
+    background-color:white;
+
+    }
+     input{
+    background-color: #d0b200;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    padding: 10px 20px;
+    margin-bottom: 16px;
+    cursor: pointer;
+    font-size: 16px;
+  }
+
+
+  </style>
+</head>
+<body>
+
+ {% block 'body' %}
+<!--{% include 'navbar.html' %}-->
+
+
+    <div class="">
+      <div>
+        <a href="/"><button>Home</button></a>
+      </div>
+         <br>
+ <br>
+        <br>
+      <div class="temp">
+        <div class="search-container">
+           <input type="text" id="search-bar"name="search" placeholder="Search..." class="search-input">
+           <a href="#" class="search-btn">
+                   <i class="fas fa-search"></i>
+           </a>
+       </div>
+     </div>
+    <div class="cards-container">
+       {% if messages %}
+        <div class="messages">
+            {% for message in messages %}
+               <p class="message {% if 'Product is already in the cart' in message %}error-message{% else %}success-message{% endif %}" style="text-align: center;">
+    {{ message }}
+</p>
+
+            {% endfor %}
+        </div>
+    {% endif %}
+<br>
+        <br>
+        {% for p in pro %}
+        <!-- Add more cards here -->
+        <!-- Example: -->
+        <div class="card image">
+          <img src="{{p.image.url}}" alt="Product 8 image">
+          <h2>{{p.name}}</h2>
+          <p>{{p.description}}</p>
+          <p class="price">Rs.{{p.price}}</p>
+          <div class="butstyle">
+              <form method="post" action="{% url 'addcartfun' %}">
+                  {% csrf_token %}
+                  <input type="hidden" name="pid" value={{p.id}}>
+                  <input type="submit"  value="Add To Cart">
+              </form>
+        </div>
+        </div>
+ {% endfor %}
+            <script src="https://kit.fontawesome.com/1234567890.js" crossorigin="anonymous"></script>
+      <script  src="/static/js/carproducts.js"></script>
+          {% endblock %}
+
+</body>
+</html>

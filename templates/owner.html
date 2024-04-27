@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+{% load static %}
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Owner</title>
+    <link href="{% static 'css/adminbootstrap.css' %}" rel="stylesheet" />
+    <link href="{% static 'css/admincustom.css' %}" rel="stylesheet" />
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' />
+<style>
+    table {
+  border-collapse: collapse;
+}
+
+th, td {
+  padding: 8px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+
+th {
+  cursor: pointer;
+}
+
+th:hover {
+  background-color: #f5f5f5;
+}
+
+</style>
+</head>
+<body>
+    <div id="wrapper">
+        <div class="navbar navbar-inverse navbar-fixed-top">
+            <div class="adjust-nav">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".sidebar-collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="#"><i class="fa fa-square-o "></i>&nbsp;PetShop {{uname}}</a>
+
+                </div>
+                <div class="navbar-collapse collapse">
+                    <ul class="nav navbar-nav navbar-right">
+                        <li><a href="{% url 'home' %}">Home</a></li>
+                        <li><a href="{% url 'addproduct' %}">Add Product</a></li>
+                        <li><a href="{% url 'viewproductsinowner' %}">View Products</a></li>
+                        <li><a href="">Logout</a></li>
+
+                    </ul>
+                </div>
+
+            </div>
+        </div>
+        <!-- /. NAV TOP  -->
+        <nav class="navbar-default navbar-side" role="navigation">
+            <div class="sidebar-collapse">
+                <ul class="nav" id="main-menu">
+                    <li class="text-center user-image-back">
+                        <img src="{% static 'images/person1.jpg' %}" class="img-responsive"/>
+
+                    </li>
+
+
+                    <li>
+                        <a href="{% url 'owner' %}"><i class="fa fa-desktop "></i>Dashboard</a>
+                    </li>
+                     <li>
+                        <a href=""><i class="fa fa-desktop "></i>User Queries</a>
+                    </li>
+
+            </div>
+
+        </nav>
+        <!-- /. NAV SIDE  -->
+        <div id="page-wrapper">
+            <div id="page-inner">
+                <div class="row">
+                    <div class="col-md-12">
+                        <h2>Owner Dashboard</h2>
+                    </div>
+                </div>
+                <!-- /. ROW  -->
+                <hr />
+                <div class="row">
+
+                    <div class="col-md-3 col-sm-3 col-xs-6">
+                        <h5>Users Registered</h5>
+                        <div class="alert alert-info text-center">
+                            <i class="fa fa-desktop fa-5x"></i>
+                            <h3>{{count}}</h3>
+                            Our Customers
+                        </div>
+                    </div>
+
+
+                </div>
+                <!-- /. ROW  -->
+                <hr />
+                <div class="row">
+                    <div class="col-md-12">
+
+                    </div>
+
+                </div>
+                <hr />
+                <div class="row">
+
+                    <div class="col-md-12">
+                        <h5>Table</h5>
+                        <div class="table-responsive" >
+                            <table class="table" id="myTable">
+                                <thead>
+                                    <tr class="info">
+                                        <th>Id</th>
+                                        <th>Name</th>
+                                        <th>EMAIL ID</th>
+                                        <th>Registration Time</th>
+                                        <th>Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                               {% for user in users %}
+                             <tr class="success">
+         <td>{{user.id}}</td>
+        <td>{{user.sign_name}}</td>
+        <td>{{user.sign_email}}</td>
+        <td>{{user.sign_time}}</td>
+        <td>
+            <a href="/deleteuser/{{user.id}}">Delete</a>
+        </td>
+
+    </tr>
+    {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+        </div>
+        <!-- /. PAGE WRAPPER  -->
+    </div>
+        <script>
+function sortTable(columnIndex, order) {
+  var table, rows, switching, i, x, y, shouldSwitch;
+  table = document.getElementById("myTable");
+  switching = true;
+
+  while (switching) {
+    switching = false;
+    rows = table.getElementsByTagName("tr");
+
+    for (i = 1; i < rows.length - 1; i++) {
+      shouldSwitch = false;
+      x = rows[i].getElementsByTagName("td")[columnIndex];
+      y = rows[i + 1].getElementsByTagName("td")[columnIndex];
+
+      if (order === "asc" && x.innerHTML.toLowerCase() > y.innerHTML.toLowerCase()) {
+        shouldSwitch = true;
+        break;
+      } else if (order === "desc" && x.innerHTML.toLowerCase() < y.innerHTML.toLowerCase()) {
+        shouldSwitch = true;
+        break;
+      }
+    }
+
+    if (shouldSwitch) {
+      rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
+      switching = true;
+    }
+  }
+}
+
+var sortColumnIndex = 0; // Serial No. column is initially selected for sorting
+var sortOrder = "asc"; // Initial sort order is ascending
+
+// Add click event listeners to the table headers for sorting
+var headers = document.getElementsByTagName("th");
+for (var i = 0; i < headers.length; i++) {
+  headers[i].addEventListener("click", function() {
+    if (sortColumnIndex === this.cellIndex) {
+      sortOrder = sortOrder === "asc" ? "desc" : "asc";
+    } else {
+      sortColumnIndex = this.cellIndex;
+      sortOrder = "asc";
+    }
+
+    sortTable(sortColumnIndex, sortOrder);
+  });
+}
+
+ </script>
+
+</body>
+</html>

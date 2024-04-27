@@ -1,0 +1,13 @@
+{% load crispy_forms_tags %}
+{% block content %}
+    {% if status %}
+    <div class="container">
+        <h1 align="center">Thank You! Your payment is Succesful</h1>
+    </div>
+    {% else %}
+        <h1 align="center">Your payment is failed! Try again</h1>
+    {% endif %}
+    <div class="text-center mt-5">
+    <a href="{% url 'home' %}" align="center" class="btn btn-success" role="button">Wanna Buy another pet</a>
+    </div>
+{% endblock %}

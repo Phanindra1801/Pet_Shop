@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Julie Stores</title>
+  <link rel="shortcut icon" href="./favicon.svg" type="image/svg+xml">
+    <link rel="stylesheet" href='static/css/style.css'>
+  <link rel="stylesheet" href='static/css/aboutus.css'>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300;400;500;600;700&family=Roboto:wght@400;500;700&display=swap"
+    rel="stylesheet">
+</head>
+<body id="top">
+  <header class="header" data-header>
+    <div class="container">
+      <div class="overlay" data-overlay></div>
+      <a href="#" class="logo">
+        <img src="static/images/logo.png" width="160" height="50" alt="Julie logo">
+      </a>
+      <button class="nav-open-btn" data-nav-open-btn aria-label="Open Menu">
+        <ion-icon name="menu-outline"></ion-icon>
+      </button>
+      <nav class="navbar" data-navbar>
+        <button class="nav-close-btn" data-nav-close-btn aria-label="Close Menu">
+          <ion-icon name="close-outline"></ion-icon>
+        </button>
+        <a href="#" class="logo">
+          <img src="static/images/logo.svg" width="190" height="50" alt="Footcap logo">
+        </a>
+        <ul class="navbar-list">
+          <li class="navbar-item">
+            <a href="{% url 'home' %}" class="navbar-link">Home</a>
+          </li>
+          <li class="navbar-item">
+            <a href="{% url 'home' %}#Shop" class="navbar-link">Shop</a>
+          </li>
+          <li class="navbar-item">
+            <a href="{% url 'home' %}#Pets" class="navbar-link">Pets</a>
+          </li>
+          <li class="navbar-item">
+            <a href="{% url 'home' %}#Needs" class="navbar-link">Needs</a>
+          </li>
+          <li class="navbar-item">
+            <a href="{% url 'home' %}#Food" class="navbar-link">Food</a>
+          </li>
+          <li class="navbar-item">
+            <a href="{% url 'owner' %}" class="navbar-link">Donor</a>
+          </li>
+          <li class="navbar-item">
+            <a href="#" class="navbar-link">About</a>
+          </li>
+          <li class="navbar-item">
+            <a href="{% url 'contact' %}" class="navbar-link">Contact</a>
+          </li>
+          <li class="navbar-item">
+            <a href="{% url 'rescue' %}" class="navbar-link">Rescue</a>
+          </li>
+        </ul>
+        <ul class="nav-action-list">
+          <li>
+            <button class="nav-action-btn">
+              <ion-icon name="search-outline" aria-hidden="true"></ion-icon>
+              <span class="nav-action-text">Search</span>
+            </button>
+          </li>
+          <li>
+            <li class="navbar-item">
+            <a href="{% url 'logout' %}" class="navbar-link">Logout</a>
+          </li>
+          </li>
+          <li>
+            <button class="nav-action-btn">
+              <ion-icon name="heart-outline" aria-hidden="true"></ion-icon>
+              <span class="nav-action-text">Wishlist</span>
+              <data class="nav-action-badge" value="5" aria-hidden="true">5</data>
+            </button>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+<main class="main flow">
+      <h1 class="main__heading">Team Members</h1>
+      <div class="main__cards cards">
+        <div class="cards__inner">
+          <!-- card 1  -->
+          <div class="cards__card card">
+            <div class="img">
+              <img src="./assets/cube.png" alt="" />
+            </div>
+            <p class="card__title">M. Phanindra Kumar</p>
+            <ul role="list" class="card__bullets flow">
+              <li>
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sequi
+                aut eum alias eveniet distinctio sunt quae beatae aliquam,
+                aliquid similique?
+              </li>
+            </ul>
+            <a style="" href="#basic" class="card__cta cta">Learn More</a>
+          </div>
+          <!-- card 1  -->
+          <!-- card 2  -->
+          <div class="cards__card card">
+            <div class="img">
+              <img src="./assets/ploygon.png" alt="" />
+            </div>
+            <p class="card__title">A.V. Praveen Kumar</p>
+            <ul role="list" class="card__bullets flow">
+              <li>
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sequi
+                aut eum alias eveniet distinctio sunt quae beatae aliquam,
+                aliquid similique?
+              </li>
+            </ul>
+            <a style="" href="#basic" class="card__cta cta">Learn More</a>
+          </div>
+          <!-- card 2  -->
+          <!-- card 3  -->
+          <div class="cards__card card">
+            <div class="img">
+              <img src="./assets/sphere.png" alt="" />
+            </div>
+            <p class="card__title">A. Ananya</p>
+            <ul role="list" class="card__bullets flow">
+              <li>
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sequi
+                aut eum alias eveniet distinctio sunt quae beatae aliquam,
+                aliquid similique?
+              </li>
+            </ul>
+            <a style="" href="#basic" class="card__cta cta">Learn More</a>
+          </div>
+          <!-- card 3  -->
+        </div>
+
+        <div class="overlay cards__inner"></div>
+      </div>
+    </main>
+    <script src="static/js/aboutus.js"></script>
+</body>
+</html>

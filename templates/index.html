@@ -1,0 +1,482 @@
+{% extends 'navbar.html' %}
+{% block body %}
+  <main>
+    <article>
+      <section class="section hero" style="background-image: url('static/images/home/background.png')">
+        <div class="container">
+        </div>
+      </section>
+      <section class="section collection" id="Shop">
+        <div class="container">
+          <ul class="collection-list has-scrollbar">
+            <li>
+              <div class="collection-card" style="background-image: url('static/images/home/Dog.jpg')">
+                <h3 class="h4 card-title">Dogs</h3>
+                <a href="{% url 'dogs' %}" class="btn btn-dark">
+                  <span>Explore All</span>
+                  <ion-icon name="arrow-forward-outline" aria-hidden="true"></ion-icon>
+                </a>
+              </div>
+            </li>
+            <li>
+              <div class="collection-card" style="background-image: url('static/images/home/Cat.jpg')">
+                <h3 class="h4 card-title">Cats</h3>
+                <a href="{% url 'cats' %}" class="btn btn-dark">
+                  <span>Explore All</span>
+                  <ion-icon name="arrow-forward-outline" aria-hidden="true"></ion-icon>
+                </a>
+              </div>
+            </li>
+            <li>
+              <div class="collection-card" style="background-image: url('static/images/home/bird.jpg')">
+                <h3 class="h4 card-title">Birds</h3>
+                <a href="{% url 'birds' %}" class="btn btn-dark">
+                  <span>Explore All</span>
+                  <ion-icon name="arrow-forward-outline" aria-hidden="true"></ion-icon>
+                </a>
+              </div>
+            </li>
+            <li>
+              <div class="collection-card" style="background-image: url('static/images/home/fish.jpg')">
+                <h3 class="h4 card-title">Fishes</h3>
+                <a href="{% url 'fishes' %}" class="btn btn-dark">
+                  <span>Explore All</span>
+                  <ion-icon name="arrow-forward-outline" aria-hidden="true"></ion-icon>
+                </a>
+              </div>
+            </li>
+            <li>
+              <div class="collection-card" style="background-image: url('static/images/home/rabbit.jpg')">
+                <h3 class="h4 card-title">Rabbits</h3>
+                <a href="{% url 'rabbits' %}" class="btn btn-dark">
+                  <span>Explore All</span>
+                  <ion-icon name="arrow-forward-outline" aria-hidden="true"></ion-icon>
+                </a>
+              </div>
+            </li>
+            <li>
+              <div class="collection-card" style="background-image: url('static/images/home/gunniepig.jpg')">
+                <h3 class="h4 card-title">Gunnie Pigs</h3>
+                <a href="{% url 'gunniepigs' %}" class="btn btn-dark">
+                  <span>Explore All</span>
+                  <ion-icon name="arrow-forward-outline" aria-hidden="true"></ion-icon>
+                </a>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </section>
+      <section class="section product">
+        <div class="container" id="Pets">
+          <h2 class="h2 section-title">Pets for Sale</h2>
+          <ul class="filter-list">
+            <li>
+              <button class="filter-btn  active">All Products</button>
+            </li>
+            <li>
+              <button class="filter-btn">Dogs</button>
+            </li>
+            <li>
+              <button class="filter-btn">Cats</button>
+            </li>
+            <li>
+              <button class="filter-btn">Birds</button>
+            </li>
+            <li>
+              <button class="filter-btn">Fishes</button>
+            </li>
+            <li>
+              <button class="filter-btn">Gunnie Pigs</button>
+            </li>
+            <li>
+              <button class="filter-btn">Dogs Accessories</button>
+            </li>
+            <li>
+              <button class="filter-btn">Cats Accessories</button>
+            </li>
+            <li>
+              <button class="filter-btn">Birds Accessories</button>
+            </li>
+            <li>
+              <button class="filter-btn">Fishes Accessories</button>
+            </li>
+          </ul>
+          <ul class="product-list">
+            {% for product in productlist %}
+            <li class="product-item">
+              <div class="product-card" tabindex="0">
+                <figure class="card-banner">
+                  <img src="{{product.image.url}}" width="312" height="350" loading="lazy"
+                    alt="{{product.name}}" class="image-contain">
+                  <div class="card-badge">New</div>
+                  <ul class="card-action-list">
+                    <li class="card-action-item">
+                      <a href="{% url 'payment' %}" class="card-action-btn" aria-labelledby="card-label-1">
+                        <ion-icon name="cart-outline"></ion-icon>
+                      </a>
+                      <div class="card-action-tooltip" >Add to Cart</div>
+                    </li>
+                  </ul>
+                </figure>
+                <div class="card-content">
+                  <h3 class="h3 card-title">
+                    <h2>{{product.name}}</h2>
+                  </h3>
+                  <data class="card-price" value="{{product.price}}">{{product.price}}</data>
+                </div>
+              </div>
+            </li>
+            {% endfor %}
+          </ul>
+        </div>
+      </section>
+
+      <section class="section cta" id="Needs">
+        <div class="container" >
+          <ul class="cta-list">
+            <li>
+              <div class="cta-card" style="background-image: url('static/images/petshelter.jpg')">
+                <p class="card-subtitle">Shelters</p>
+                <h3 class="h2 card-title">Sale Off 50%</h3>
+                <a href="{% url 'shelters' %}" class="btn btn-link">
+                  <span>Shop Now</span>
+                  <ion-icon name="arrow-forward-outline" aria-hidden="true"></ion-icon>
+                </a>
+              </div>
+            </li>
+            <li>
+              <div class="cta-card" style="background-image: url('static/images/petmedicines.jpg')">
+                <p class="card-subtitle">Medicines</p>
+                <h3 class="h2 card-title">Sale Off 30%</h3>
+                <a href="{% url 'medicines' %}" class="btn btn-link">
+                  <span>Shop Now</span>
+                  <ion-icon name="arrow-forward-outline" aria-hidden="true"></ion-icon>
+                </a>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </section>
+      <section class="section special" id="Food">
+        <div class="container">
+          <div class="special-banner" style="background-image: url('static/images/petfood.jpg')">
+            <h2 class="h3 banner-title">Foods & Treats</h2>
+            <a href="#" class="btn btn-link">
+              <span>Explore All</span>
+              <ion-icon name="arrow-forward-outline" aria-hidden="true"></ion-icon>
+            </a>
+          </div>
+          <div class="special-product">
+            <h2 class="h2 section-title">
+              <span class="text">Special Treats</span>
+              <span class="line"></span>
+            </h2>
+            <ul class="has-scrollbar">
+              <li class="product-item">
+                <div class="product-card" tabindex="0">
+                  <figure class="card-banner">
+                    <img src="static/images/treat1.jpg" width="312" height="350" loading="lazy"
+                      alt="Dog food image" class="image-contain">
+                    <div class="card-badge">New</div>
+                    <ul class="card-action-list">
+                      <li class="card-action-item">
+                        <button class="card-action-btn" aria-labelledby="card-label-1">
+                          <ion-icon name="cart-outline"></ion-icon>
+                        </button>
+                        <div class="card-action-tooltip">Add to Cart</div>
+                      </li>
+                      <li class="card-action-item">
+                        <button class="card-action-btn" aria-labelledby="card-label-2">
+                          <ion-icon name="heart-outline"></ion-icon>
+                        </button>
+                        <div class="card-action-tooltip">Add to Whishlist</div>
+                      </li>
+                      <li class="card-action-item">
+                        <button class="card-action-btn" aria-labelledby="card-label-3">
+                          <ion-icon name="eye-outline"></ion-icon>
+                        </button>
+                        <div class="card-action-tooltip">Quick View</div>
+                      </li>
+                      <li class="card-action-item">
+                        <button class="card-action-btn" aria-labelledby="card-label-4">
+                          <ion-icon name="repeat-outline"></ion-icon>
+                        </button>
+                        <div class="card-action-tooltip">Compare</div>
+                      </li>
+                    </ul>
+                  </figure>
+                  <div class="card-content">
+                    <div class="card-cat">
+                      <p class="card-cat-link">pair</p>
+                    </div>
+                    <h3 class="h3 card-title">
+                      <h2>Bone Biscuits</h2>
+                    </h3>
+                    <data class="card-price" value="180.85">₹ 180</data>
+                  </div>
+                </div>
+              </li>
+              <li class="product-item">
+                <div class="product-card" tabindex="0">
+                  <figure class="card-banner">
+                    <img src="static/images/treat2.jpg" width="312" height="350" loading="lazy"
+                      alt="Cat food image" class="image-contain">
+                    <ul class="card-action-list">
+                      <li class="card-action-item">
+                        <button class="card-action-btn" aria-labelledby="card-label-1">
+                          <ion-icon name="cart-outline"></ion-icon>
+                        </button>
+                        <div class="card-action-tooltip">Add to Cart</div>
+                      </li>
+                      <li class="card-action-item">
+                        <button class="card-action-btn" aria-labelledby="card-label-2">
+                          <ion-icon name="heart-outline"></ion-icon>
+                        </button>
+                        <div class="card-action-tooltip" >Add to Whishlist</div>
+                      </li>
+                      <li class="card-action-item">
+                        <button class="card-action-btn" aria-labelledby="card-label-3">
+                          <ion-icon name="eye-outline"></ion-icon>
+                        </button>
+                        <div class="card-action-tooltip" >Quick View</div>
+                      </li>
+                      <li class="card-action-item">
+                        <button class="card-action-btn" aria-labelledby="card-label-4">
+                          <ion-icon name="repeat-outline"></ion-icon>
+                        </button>
+                        <div class="card-action-tooltip">Compare</div>
+                      </li>
+                    </ul>
+                  </figure>
+                  <div class="card-content">
+                    <div class="card-cat">
+                      <p class="card-cat-link">Ten</p>
+                    </div>
+                    <h3 class="h3 card-title">
+                      <h2>Fishy Snack</h2>
+                    </h3>
+                    <data class="card-price" value="190.85">₹ 190</data>
+                  </div>
+                </div>
+              </li>
+              <li class="product-item">
+                <div class="product-card" tabindex="0">
+                  <figure class="card-banner">
+                    <img src="static/images/treat3.jpg" width="312" height="350" loading="lazy"
+                      alt="fish food image" class="image-contain">
+                    <div class="card-badge">New</div>
+                    <ul class="card-action-list">
+                      <li class="card-action-item">
+                        <button class="card-action-btn" aria-labelledby="card-label-1">
+                          <ion-icon name="cart-outline"></ion-icon>
+                        </button>
+                        <div class="card-action-tooltip">Add to Cart</div>
+                      </li>
+                      <li class="card-action-item">
+                        <button class="card-action-btn" aria-labelledby="card-label-2">
+                          <ion-icon name="heart-outline"></ion-icon>
+                        </button>
+                        <div class="card-action-tooltip">Add to Whishlist</div>
+                      </li>
+                      <li class="card-action-item">
+                        <button class="card-action-btn" aria-labelledby="card-label-3">
+                          <ion-icon name="eye-outline"></ion-icon>
+                        </button>
+                        <div class="card-action-tooltip">Quick View</div>
+                      </li>
+                      <li class="card-action-item">
+                        <button class="card-action-btn" aria-labelledby="card-label-4">
+                          <ion-icon name="repeat-outline"></ion-icon>
+                        </button>
+                        <div class="card-action-tooltip">Compare</div>
+                      </li>
+                    </ul>
+                  </figure>
+                  <div class="card-content">
+                    <div class="card-cat">
+                      <p class="card-cat-link">1 kg</p>
+                    </div>
+                    <h3 class="h3 card-title">
+                      <h2>food grains</h2>
+                    </h3>
+                    <data class="card-price" value="160.85">₹ 160</data>
+                  </div>
+                </div>
+              </li>
+              <li class="product-item">
+                <div class="product-card" tabindex="0">
+                  <figure class="card-banner">
+                    <img src="static/images/treat4.jpg" width="312" height="350" loading="lazy"
+                      alt="Rabbit food image" class="image-contain">
+                    <div class="card-badge"> -25%</div>
+                    <ul class="card-action-list">
+                      <li class="card-action-item">
+                        <button class="card-action-btn" aria-labelledby="card-label-1">
+                          <ion-icon name="cart-outline"></ion-icon>
+                        </button>
+                        <div class="card-action-tooltip" id="card-label-1">Add to Cart</div>
+                      </li>
+                      <li class="card-action-item">
+                        <button class="card-action-btn" aria-labelledby="card-label-2">
+                          <ion-icon name="heart-outline"></ion-icon>
+                        </button>
+                        <div class="card-action-tooltip" id="card-label-2">Add to Whishlist</div>
+                      </li>
+                      <li class="card-action-item">
+                        <button class="card-action-btn" aria-labelledby="card-label-3">
+                          <ion-icon name="eye-outline"></ion-icon>
+                        </button>
+                        <div class="card-action-tooltip" id="card-label-3">Quick View</div>
+                      </li>
+                      <li class="card-action-item">
+                        <button class="card-action-btn" aria-labelledby="card-label-4">
+                          <ion-icon name="repeat-outline"></ion-icon>
+                        </button>
+                        <div class="card-action-tooltip" id="card-label-4">Compare</div>
+                      </li>
+                    </ul>
+                  </figure>
+                  <div class="card-content">
+                    <div class="card-cat">
+                      <p class="card-cat-link">pair</p>
+                    </div>
+                    <h3 class="h3 card-title">
+                      <h2>Decorated eggs</h2>
+                    </h3>
+                    <data class="card-price" value="170.85">₹ 170<del>₹ 200</del></data>
+                  </div>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </section>
+      <section class="section service">
+        <div class="container">
+          <ul class="service-list">
+            <li class="service-item">
+              <div class="service-card">
+                <div class="card-icon">
+                  <img src="static/images/service-1.png" width="53" height="28" loading="lazy" alt="Service icon">
+                </div>
+                <div>
+                  <h3 class="h4 card-title">Free Shiping</h3>
+                  <p class="card-text">
+                    All orders over <span></span>
+                  </p>
+                </div>
+              </div>
+            </li>
+            <li class="service-item">
+              <div class="service-card">
+                <div class="card-icon">
+                  <img src="static/images/service-2.png" width="43" height="35" loading="lazy" alt="Service icon">
+                </div>
+                <div>
+                  <h3 class="h4 card-title">Quick Payment</h3>
+                  <p class="card-text">
+                    100% secure payment
+                  </p>
+                </div>
+              </div>
+            </li>
+            <li class="service-item">
+              <div class="service-card">
+                <div class="card-icon">
+                  <img src="static/images/service-4.png" width="40" height="40" loading="lazy" alt="Service icon">
+                </div>
+                <div>
+                  <h3 class="h4 card-title">24/7 Support</h3>
+                  <p class="card-text">
+                    Get Quick Support
+                  </p>
+                </div>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </section>
+      <section class="section insta-post">
+        <ul class="insta-post-list has-scrollbar">
+          <li class="insta-post-item">
+            <img src="static/images/home/Dog.jpg" width="100" height="100" loading="lazy" alt="Instagram post"
+              class="insta-post-banner image-contain">
+            <a href="#" class="insta-post-link">
+              <ion-icon name="logo-instagram"></ion-icon>
+            </a>
+          </li>
+          <li class="insta-post-item">
+            <img src="static/images/home/Cat.jpg" width="100" height="100" loading="lazy" alt="Instagram post"
+              class="insta-post-banner image-contain">
+            <a href="#" class="insta-post-link">
+              <ion-icon name="logo-instagram"></ion-icon>
+            </a>
+          </li>
+          <li class="insta-post-item">
+            <img src="static/images/home/bird.jpg" width="100" height="100" loading="lazy" alt="Instagram post"
+              class="insta-post-banner image-contain">
+            <a href="#" class="insta-post-link">
+              <ion-icon name="logo-instagram"></ion-icon>
+            </a>
+          </li>
+          <li class="insta-post-item">
+            <img src="static/images/home/fish.jpg" width="100" height="100" loading="lazy" alt="Instagram post"
+              class="insta-post-banner image-contain">
+            <a href="#" class="insta-post-link">
+              <ion-icon name="logo-instagram"></ion-icon>
+            </a>
+          </li>
+          <li class="insta-post-item">
+            <img src="static/images/home/rabbit.jpg" width="100" height="100" loading="lazy" alt="Instagram post"
+              class="insta-post-banner image-contain">
+            <a href="#" class="insta-post-link">
+              <ion-icon name="logo-instagram"></ion-icon>
+            </a>
+          </li>
+          <li class="insta-post-item">
+            <img src="static/images/gunniepigs/gunniepig.jpg" width="100" height="100" loading="lazy" alt="Instagram post"
+              class="insta-post-banner image-contain">
+            <a href="#" class="insta-post-link">
+              <ion-icon name="logo-instagram"></ion-icon>
+            </a>
+          </li>
+          <li class="insta-post-item">
+            <img src="static/images/home/dogaccessories.jpg" width="100" height="100" loading="lazy" alt="Instagram post"
+              class="insta-post-banner image-contain">
+            <a href="#" class="insta-post-link">
+              <ion-icon name="logo-instagram"></ion-icon>
+            </a>
+          </li>
+          <li class="insta-post-item">
+            <img src="static/images/home/cataccessories.jpg" width="100" height="100" loading="lazy" alt="Instagram post"
+              class="insta-post-banner image-contain">
+            <a href="#" class="insta-post-link">
+              <ion-icon name="logo-instagram"></ion-icon>
+            </a>
+          </li>
+        </ul>
+      </section>
+    </article>
+  </main>
+  <footer class="footer">
+    <div class="footer-top section">
+      <div class="container">
+        <div class="footer-brand">
+          <a href="#" class="logo">
+            <img src="static/images/logo.png" width="160" height="50" alt="Footcap logo">
+          </a>
+          <ul class="social-list">
+            <li>
+              <a href="#" class="social-link">
+                <ion-icon name="logo-linkedin"></ion-icon>
+              </a>
+            </li>
+          </ul>
+        </div>
+  <a href="#top" class="go-top-btn" data-go-top>
+    <ion-icon name="arrow-up-outline"></ion-icon>
+  </a>
+      </div>
+    </div>
+    </footer>
+{% endblock %}

@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rabbits</title>
+  <link rel="stylesheet" href="static/css/dogs.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Mr+De+Haviland&family=Roboto:wght@400;500;700&display=swap"
+    rel="stylesheet">
+</head>
+<body id="top">
+  <header class="header" data-header>
+    <div class="container">
+      <a href="{% url 'home' %}"><b>Home</b></a>
+      <h1 align="center">Rabbits</h1>
+      <div class="header-action">
+        <button class="header-action-btn" aria-label="user">
+          <ion-icon name="person-outline" aria-hidden="true"></ion-icon>
+        </button>
+        <button class="header-action-btn" aria-label="favorite list">
+          <a href="{% url 'getcart' %}" class="navbar-link"><ion-icon name="cart-outline" aria-hidden="true"></ion-icon></a>
+        </button>
+      </div>
+    </div>
+  </header>
+  <div class="overlay" data-overlay data-nav-toggler></div>
+  <main>
+    <article>
+      <section class="section hero" id="home" aria-label="home">
+        <div class="container">
+          <ul class="hero-list">
+            <li>
+              <div class="hero-card">
+                <figure class="card-banner img-holder" style="--width: 310; --height: 350;">
+                  <img src="static/images/rabbits/food.jpg" width="285" height="396" alt="Art Deco Home"
+                    class="img-cover">
+                </figure>
+                <div class="card-content">
+                  <h3>
+                    <a href="#" class="card-title">Food Items</a>
+                  </h3>
+                </div>
+              </div>
+            </li>
+            <li class="colspan-2">
+              <div class="hero-card">
+                <figure class="card-banner img-holder" style="--width: 568; --height: 389;">
+                  <img src="static/images/rabbits/rabbit.jpg" width="568" height="389" alt="Helen Chair"
+                    class="img-cover">
+                </figure>
+                <div class="card-content">
+                  <h3>
+                    <a href="#" class="card-title">Breeds</a>
+                  </h3>
+                </div>
+              </div>
+            </li>
+            <li>
+              <div class="hero-card">
+                <figure class="card-banner img-holder" style="--width: 285; --height: 396;">
+                  <img src="static/images/cats/cage1.jpg" width="285" height="396" alt="Vase Of Flowers"
+                    class="img-cover">
+                </figure>
+                <div class="card-content">
+                  <h3>
+                    <a href="#" class="card-title">Shelters</a>
+                  </h3>
+                </div>
+              </div>
+            </li>
+            <li class="colspan-2">
+              <div class="hero-card">
+                <figure class="card-banner img-holder" style="--width: 580; --height: 300;">
+                  <img src="static/images/rabbits/acc.jpg" width="480" height="213" alt="Wood Eggs"
+                    class="img-cover">
+                </figure>
+                <div class="card-content">
+                  <h3>
+                    <a href="#" class="card-title">Accessories</a>
+                  </h3>
+                </div>
+              </div>
+            </li>
+            <li class="colspan-2">
+              <div class="hero-card">
+                <figure class="card-banner img-holder" style="--width: 580; --height: 300;">
+                  <img src="static/images/Dp5.jpg" width="580" height="213" alt="Table Wood Pine"
+                    class="img-cover">
+                </figure>
+                <div class="card-content">
+                  <h3>
+                    <a href="#" class="card-title">Couches</a>
+                  </h3>
+                </div>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </section>
+      <section class="section about" id="about" aria-label="about">
+        <div class="container">
+          <pre><h2 class="section-title">Rabbits - A bouncing innocence</h2></pre>
+          <p class="section-text">
+            "Amidst soft fur and gentle hops lies a world of boundless affection and endless joy. Adopt a rabbit, and discover the warmth of a furry friend who will fill your days with love."
+          </p>
+        </div>
+      </section>
+      <section class="section product" id="product" aria-label="product">
+        <div class="container">
+          <div class="title-wrapper">
+            <h2 class="h2 section-title">Popular Products</h2>
+            <ul class="filter-btn-list">
+              <li class="filter-btn-item">
+                <button class="filter-btn active" data-filter-btn="all">Breeds</button>
+              </li>
+              <li class="filter-btn-item">
+                <button class="filter-btn" data-filter-btn="accessory">Accessories</button>
+              </li>
+              <li class="filter-btn-item">
+                <button class="filter-btn" data-filter-btn="decoration">Food Items</button>
+              </li>
+              <li class="filter-btn-item">
+                <button class="filter-btn" data-filter-btn="furniture">Shelters</button>
+              </li>
+              <li class="filter-btn-item">
+                <button class="filter-btn" data-filter-btn="furniture">Couches</button>
+              </li>
+            </ul>
+          </div>
+          <ul class="grid-list product-list" data-filter="all">
+            {% for product in productlist %}
+            <li class="decoration">
+              <div class="product-card">
+                <a href="{% url 'payment' %}" class="card-banner img-holder has-before" style="--width: 300; --height: 300;">
+                  <img src="{{product.image.url}}" width="300" height="300" loading="lazy"
+                    alt="{{product.name}}" class="img-cover">
+                  <ul class="card-action-list">
+                    <li>
+            <button class="card-action-btn"  aria-label="add to cart" title="add to cart">
+                <ion-icon name="bag-handle-outline" aria-hidden="true"></ion-icon> <!-- Icon for representing adding to cart -->
+           </button>
+          </li>
+                  </ul>
+                </a>
+                <div class="card-content">
+                  <h3 class="h3">
+                    <a href="#" class="card-title">{{product.name}}</a>
+                  </h3>
+                  <div class="card-price">
+                    <data class="price" value="10">{{product.price}}</data>
+                  </div>
+                </div>
+              </div>
+            </li>
+            {% endfor %}
+
+          </ul>
+
+        </div>
+      </section>
+
+  <!--
+    - #BACK TO TOP
+  -->
+
+  <a href="#top" class="back-top-btn" aria-label="back to top" data-back-top-btn>
+    <ion-icon name="arrow-up" aria-hidden="true"></ion-icon>
+  </a>
+
+
+
+
+
+  <!--
+    - custom js link
+  -->
+  <script src="static/js/dogscript.js" defer></script>
+
+  <!--
+    - ionicon link
+  -->
+  <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+
+</body>
+</html>
